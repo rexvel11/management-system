@@ -46,7 +46,7 @@ if ($result && mysqli_num_rows($result) > 0) {
             <img src="/management-system/img/sorsu-removebg-preview.png" alt="Admin Profile">
             <?php echo htmlspecialchars($student['fName']); ?>
             <a href="/management-system/logout.php" class="logout-icon">
-                <i class="fa fa-sign-out-alt"></i> <!-- Logout Icon -->
+                <i class="fa fa-sign-out-alt"></i> <!-- Logout Icon -->   
             </a>
         </div>
     </header>

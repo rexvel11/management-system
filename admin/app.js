@@ -5,7 +5,7 @@ const id = document.getElementById('logo')
 function toggleSidebar(){
   sidebar.classList.toggle('close')
   toggleButton.classList.toggle('rotate')
-  id.classList.toggle('close')
+  
   closeAllSubMenus()
 }
 
