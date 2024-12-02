@@ -1,59 +1,42 @@
+<?php
+session_start();
+
+// Redirect to login page if the user is not logged in or is not an admin
+if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] != 'admin') {
+    header("Location: /management-system/base.php");
+    exit;
+}
+
+// Implement session timeout (30 minutes)
+$timeout_duration = 30 * 60; // 30 minutes in seconds
+if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity']) > $timeout_duration) {
+    session_unset();     // Unset session variables
+    session_destroy();   // Destroy session
+    header("Location: /management-system/base.php");
+    exit;
+}
+$_SESSION['last_activity'] = time(); // Update last activity time
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    /* Logo container styling */
-.logo {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-  margin: 20px 0;
-}
-
-/* Image styling for the logo */
-/* Logo container styling */
-.logo {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  margin: 5px 0;
-}
-
-/* Image styling for the logo */
-.logo img {
-  max-width: 150px; /* Adjust size */
-  height: auto;
-  margin-bottom: 5px;
-}
-
-/* Heading styling for h2 inside the logo container */
-.logo h2 {
-  font-size: 14px; /* Adjust font size */
-  font-weight: bold;
-  color: white; /* Matching the red accent in the logo */
-  text-transform: uppercase;
-  margin: 0;
-  line-height: 1.4;
-}
-
-  </style>
+  <link rel="stylesheet" href="style-ad.css">
 </head>
 <body>
   <nav id="sidebar">
     <ul>
       <li>
-        <span id="logo" class="logo">Admin</span>
+        <span class="logo">Admin</span>
         <button onclick=toggleSidebar() id="toggle-btn">
           <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m313-480 155 156q11 11 11.5 27.5T468-268q-11 11-28 11t-28-11L228-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T468-692q11 11 11 28t-11 28L313-480Zm264 0 155 156q11 11 11.5 27.5T732-268q-11 11-28 11t-28-11L492-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T732-692q11 11 11 28t-11 28L577-480Z"/></svg>
         </button>
       </li>
       <li>
-      <div class="logo">
+      <div id="logo" class="logo">
                 <img src="/management-system/img/sorsu-removebg-preview.png" alt="Logo">
                 <h2>Student Management System</h2>
             </div>
