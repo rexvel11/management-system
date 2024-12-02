@@ -126,7 +126,7 @@ if (isset($_POST['login'])) {
                 $_SESSION['last_activity'] = time();
 
                 if ($row['user_type'] == 'admin') {
-                    header("Location: /management-system/admin/homepage.php");
+                    header("Location: /management-system/admin/index.php");
                     exit();
                 } elseif ($row['user_type'] == 'student') {
                     header("Location: /management-system/student/student-page.php");

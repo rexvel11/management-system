@@ -141,6 +141,32 @@ main p{
 
   h2, p { margin-top: 1em }
 }
+/* Logo container styling */
+.logo {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  margin: 20px 0;
+}
+
+/* Image styling for the logo */
+.logo img {
+  max-width: 100px; /* Adjust size */
+  height: auto;
+  margin-bottom: 10px;
+}
+
+/* Heading styling for h2 inside the logo container */
+.logo h2 {
+  font-size: 18px; /* Adjust font size */
+  font-weight: bold;
+  color: #d32f2f; /* Matching the red accent in the logo */
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1.4;
+}
+
 
 @media(max-width: 800px){
   body{
